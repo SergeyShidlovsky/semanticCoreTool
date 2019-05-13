@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
@@ -12,12 +13,12 @@ public class TextScanner {
 
     public String readFile(){
         try {
-            path = "D:/Documents Sergey/source.txt";
+            File path = new File("../../semanticCoreTool/source.txt");
             fis = new FileInputStream(path);
             buffer = new byte[fis.available()];
 
             fis.read(buffer, 0, buffer.length);
-            String content = new String( buffer);
+            String content = new String (buffer);
             fis.close();
             return content;
 
