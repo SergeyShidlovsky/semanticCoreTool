@@ -1,9 +1,5 @@
 package com.company;
 
-import javafx.beans.InvalidationListener;
-import javafx.beans.value.WritableSetValue;
-import javafx.collections.SetChangeListener;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -72,10 +68,10 @@ public class TextScanner {
                         iterator++;
                     }
                 }
-                System.out.println(compareWord + "  - " + iterator);
+                //System.out.println(compareWord + "  - " + iterator);
                // key.add(compareWord);
                 //value.add(iterator);
-                map.putIfAbsent(compareWord,iterator);
+                map.putIfAbsent(compareWord.toLowerCase(),iterator);
             }
             iterator = 0;
         }

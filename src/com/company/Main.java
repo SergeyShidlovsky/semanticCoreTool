@@ -9,13 +9,15 @@ public class Main {
         String inputData = ts.readFile();
         TextBreaker tb = new TextBreaker();
         List<String> output = tb.getWords(inputData);
+        SemanticCoreBuilder scb = new SemanticCoreBuilder();
         //System.out.println(inputData);
         System.out.println("Test statistics");
         System.out.println("Quantity of cymbols " +ts.getQuantityOfCymbols(inputData));
         System.out.println("Quantity of cymbols without space " +ts.getQuantityOfCymbolsWithoutSpaces(inputData));
         System.out.println("Quantity of words in text " + output.size());
-        System.out.println("Quantity of Unique words ");
-        ts.getQuantityOfUniqueWords(output);
+        System.out.println("Quantity of Unique words " +
+                scb.getQuantityOfUniqueWords(ts.getQuantityOfUniqueWords(output)));
+        scb.buildSemanticCore(ts.getQuantityOfUniqueWords(output));
         System.out.println("Quantity of stop-words ");
         System.out.println("Classic toshnota of document ");
         System.out.println("Academic toshnota of document ");
