@@ -1,9 +1,13 @@
 package com.company;
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.value.WritableSetValue;
+import javafx.collections.SetChangeListener;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.List;
+import java.util.*;
 
 public class TextScanner {
 
@@ -15,6 +19,10 @@ public class TextScanner {
     String compareWord;
     String nextWord;
     String curr;
+
+    //Set key = new HashSet();
+    //Set value = new HashSet();
+    Map map = new HashMap();
 
 
     public String readFile(){
@@ -38,7 +46,7 @@ public class TextScanner {
         return quantityOfCymbols = content.length();
     }
 
-    public int getQuantityOfCymbolsWithouSpaces(String content){
+    public int getQuantityOfCymbolsWithoutSpaces(String content){
         for (int i = 0; i < content.length(); i++) {
             if (content.toCharArray()[i] != ' ') {
                 quantityOfCymbols++;
@@ -47,24 +55,38 @@ public class TextScanner {
         return quantityOfCymbols;
     }
 
-    public void getQuantityOfUniqueWords(List<String> context){
-            for (int i = 0; i < context.size(); i++) {
+    public Map getQuantityOfUniqueWords(List<String> context){
+        for (int i = 1; i < context.size(); i++) {
 
-                compareWord = context.get(i);
-                if (i!=(context.size()-1)){
-                    nextWord = context.get(i+1);
-                }
-                if(!compareWord.equals(nextWord)){
-                    for (int j = 0; j < context.size(); j++) {
-                        curr = context.get(j);
-                        if (compareWord.equals(curr)) {
-                            iterator++;
-                        }
-                    }
-                    System.out.println(compareWord + "  - " + iterator);
-                }
-                //System.out.println(compareWord + "  - " + iterator);
-                iterator = 0;
+            compareWord = context.get(i-1);
+            if (i!=(context.size()-1)){
+                nextWord = context.get(i);
             }
+            else{
+                nextWord = context.get(i-1);
+            }
+            if(!compareWord.equals(nextWord)){
+                for (int j = 0; j < context.size(); j++) {
+                    curr = context.get(j);
+                    if (compareWord.equals(curr)) {
+                        iterator++;
+                    }
+                }
+                System.out.println(compareWord + "  - " + iterator);
+               // key.add(compareWord);
+                //value.add(iterator);
+                map.putIfAbsent(compareWord,iterator);
+            }
+            iterator = 0;
+        }
+//        System.out.println("arraylist output");
+//        for (int i = 0; i <key.size() ; i++) {
+//            System.out.print(key.toArray()[i] + " - ");
+//        }
+//        System.out.println();
+//        for (int i = 0; i <map.size() ; i++) {
+//            System.out.println("Values collection from map - " + map.keySet().toArray()[i]  + " - " + map.get(map.keySet().toArray()[i]));
+//        }
+        return map;
     }
 }

@@ -12,7 +12,7 @@ public class Main {
         //System.out.println(inputData);
         System.out.println("Test statistics");
         System.out.println("Quantity of cymbols " +ts.getQuantityOfCymbols(inputData));
-        System.out.println("Quantity of cymbols without space " +ts.getQuantityOfCymbolsWithouSpaces(inputData));
+        System.out.println("Quantity of cymbols without space " +ts.getQuantityOfCymbolsWithoutSpaces(inputData));
         System.out.println("Quantity of words in text " + output.size());
         System.out.println("Quantity of Unique words ");
         ts.getQuantityOfUniqueWords(output);
