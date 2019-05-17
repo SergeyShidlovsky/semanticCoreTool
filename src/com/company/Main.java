@@ -16,8 +16,8 @@ public class Main {
         System.out.println("Quantity of cymbols without space " +ts.getQuantityOfCymbolsWithoutSpaces(inputData));
         System.out.println("Quantity of words in text " + output.size());
         System.out.println("Quantity of Unique words " +
-                scb.getQuantityOfUniqueWords(ts.getQuantityOfUniqueWords(output)));
-        scb.buildSemanticCore(ts.getQuantityOfUniqueWords(output));
+                scb.getQuantityOfUniqueWords(ts.getMapOfUniqueWords(output)));
+        scb.buildSemanticCore(ts.getMapOfUniqueWords(output));
         System.out.println("Quantity of stop-words ");
         System.out.println("Classic toshnota of document ");
         System.out.println("Academic toshnota of document ");

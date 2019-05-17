@@ -51,7 +51,7 @@ public class TextScanner {
         return quantityOfCymbols;
     }
 
-    public Map getQuantityOfUniqueWords(List<String> context){
+    public Map getMapOfUniqueWords(List<String> context){
         for (int i = 1; i < context.size(); i++) {
 
             compareWord = context.get(i-1);
