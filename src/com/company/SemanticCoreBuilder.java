@@ -17,7 +17,8 @@ public class SemanticCoreBuilder {
     private float classicToshnota;
     private String maximalKeyOfWord;
     BufferedWriter result;
-    FileOutputStream fos;
+    File resultFile;
+
     private static DecimalFormat df = new DecimalFormat("0.00");
 
     Map <String, Integer> sortedKeyValueData = new TreeMap<>();
@@ -32,7 +33,6 @@ public class SemanticCoreBuilder {
     }
 
     public int getQuantityOfUniqueWords(Map keyValueData){
-        sortedKeyValueData.putAll(keyValueData);
 
         for (int i = 0; i < keyValueData.size() ; i++) {
             quantityOfwords = quantityOfwords +
@@ -44,6 +44,7 @@ public class SemanticCoreBuilder {
     }
 
     public void buildSemanticCore(Map keyValueData){
+        sortedKeyValueData.putAll(keyValueData);
         quantityOfwords = getQuantityOfUniqueWords(keyValueData);
         maximalValueOfWord=0;
         buffer = 0;
@@ -84,7 +85,6 @@ public class SemanticCoreBuilder {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            System.out.println( sortedKeyValueData.keySet().toArray()[i]  + " - " + sortedKeyValueData.get(sortedKeyValueData.keySet().toArray()[i]));
          }
         try {
             result.close();
@@ -95,5 +95,8 @@ public class SemanticCoreBuilder {
                 maximalValueOfWord);
     }
 
-
+    public File getResultFile(){
+        File resultFile = new File(this.getClass().getResource("result.html").getFile());
+        return resultFile;
+    }
 }

@@ -1,5 +1,9 @@
 package com.company;
 
+import java.awt.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 
 public class Main {
@@ -10,7 +14,21 @@ public class Main {
         TextBreaker tb = new TextBreaker();
         List<String> output = tb.getWords(inputData);
         SemanticCoreBuilder scb = new SemanticCoreBuilder();
+
         //System.out.println(inputData);
+        StatisticBuilder statB = new StatisticBuilder();
+        statB.buildTextStatistic(ts.getQuantityOfCymbols(inputData),
+                ts.getQuantityOfCymbolsWithoutSpaces(inputData),
+                output.size(), scb.getQuantityOfUniqueWords(ts.getMapOfUniqueWords(output)),
+                6);
+
+
+        try {
+            Desktop.getDesktop().browse(scb.getResultFile().toURI());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         System.out.println("Test statistics");
         System.out.println("Quantity of cymbols " +ts.getQuantityOfCymbols(inputData));
         System.out.println("Quantity of cymbols without space " +ts.getQuantityOfCymbolsWithoutSpaces(inputData));
