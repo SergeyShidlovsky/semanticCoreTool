@@ -3,7 +3,7 @@ html {
     padding: 0;
 }
 body {
-    font-family: 'Handlee', cursive;
+    font-family: 'Comic sans', cursive;
     font-size: 13pt;
     background-color: #efefef;
     padding: 10px;
@@ -33,6 +33,7 @@ p {
     padding: 15px;
     margin-bottom: 10px;
     border-radius: 10px;
+    font-size : 22pt
 }
 #header {
     background-image: url("http://beweb.dmservicessrl.com/wp-content/uploads/2014/07/macchina-da-scrivere.jpg");
@@ -45,13 +46,14 @@ p {
     margin: auto;
 }
 #header p {
-    font-size: 25pt;
+    font-size: 26pt;
     color: #ffaa16;
     padding-top: 5px;
     margin: 0;
     font-weight: bold;
     text-align: center;
 }
+
 .quote {
     font-size: 12pt;
     text-align: right;
