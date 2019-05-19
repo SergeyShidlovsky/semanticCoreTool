@@ -11,10 +11,10 @@ public class TextScanner {
     private byte[] buffer;
     private File path;
     private int quantityOfCymbols;
-    int iterator;
-    String compareWord;
-    String nextWord;
-    String curr;
+    private int iterator;
+    private String compareWord;
+    private String nextWord;
+    private String curr;
 
     //Set key = new HashSet();
     //Set value = new HashSet();
@@ -39,10 +39,17 @@ public class TextScanner {
     }
 
     public int getQuantityOfCymbols(String content){
-        return quantityOfCymbols = content.length();
+        quantityOfCymbols =0;
+        for (int i = 0; i < content.length(); i++) {
+
+            quantityOfCymbols++;
+        }
+
+        return quantityOfCymbols;
     }
 
     public int getQuantityOfCymbolsWithoutSpaces(String content){
+        quantityOfCymbols =0;
         for (int i = 0; i < content.length(); i++) {
             if (content.toCharArray()[i] != ' ') {
                 quantityOfCymbols++;
@@ -68,21 +75,10 @@ public class TextScanner {
                         iterator++;
                     }
                 }
-                //System.out.println(compareWord + "  - " + iterator);
-               // key.add(compareWord);
-                //value.add(iterator);
                 map.putIfAbsent(compareWord.toLowerCase(),iterator);
             }
             iterator = 0;
         }
-//        System.out.println("arraylist output");
-//        for (int i = 0; i <key.size() ; i++) {
-//            System.out.print(key.toArray()[i] + " - ");
-//        }
-//        System.out.println();
-//        for (int i = 0; i <map.size() ; i++) {
-//            System.out.println("Values collection from map - " + map.keySet().toArray()[i]  + " - " + map.get(map.keySet().toArray()[i]));
-//        }
         return map;
     }
 }

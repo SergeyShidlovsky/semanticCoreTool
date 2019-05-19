@@ -21,19 +21,18 @@ public class StatisticBuilder {
     public void buildTextStatistic(int quantityOfCymbols,
                                    int quantityOfCymbolsWithoutSpaces,
                                    int quantityOfWords,
-                                   int quantityOfUniqueWords,
-                                   int academicToshnota) {
+                                   int quantityOfUniqueWords) {
         initializeStatisticFile();
 
         try {
-            statistic.write("Кількість Символів - " + String.valueOf(quantityOfCymbols));
+            statistic.write("Кількість Символів - " + quantityOfCymbols);
             statistic.newLine();
             statistic.write("Кількість символів без пробілу - " + quantityOfCymbolsWithoutSpaces);
             statistic.newLine();
             statistic.write("Кількість Слів - " + quantityOfWords);
-            statistic.newLine();            statistic.write("Кількість Унікальних Слів - " + quantityOfUniqueWords);
-            statistic.write("Академічна Частита  - " + academicToshnota);
-            statistic.write(" %");
+            statistic.newLine();
+            statistic.write("Кількість Унікальних Слів - " + quantityOfUniqueWords);
+            statistic.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

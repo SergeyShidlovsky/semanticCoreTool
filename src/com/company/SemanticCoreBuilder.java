@@ -33,7 +33,7 @@ public class SemanticCoreBuilder {
     }
 
     public int getQuantityOfUniqueWords(Map keyValueData){
-
+        quantityOfwords = 0;
         for (int i = 0; i < keyValueData.size() ; i++) {
             quantityOfwords = quantityOfwords +
                     Integer.valueOf(keyValueData.
@@ -45,36 +45,18 @@ public class SemanticCoreBuilder {
 
     public void buildSemanticCore(Map keyValueData){
         sortedKeyValueData.putAll(keyValueData);
-        quantityOfwords = getQuantityOfUniqueWords(keyValueData);
-        maximalValueOfWord=0;
+
+        quantityOfwords = getQuantityOfUniqueWords(sortedKeyValueData);
         buffer = 0;
         initializeResultFile();
 
-        for (int i = 0; i <keyValueData.size() ; i++) {
+        for (int i = 0; i < sortedKeyValueData.size() ; i++) {
 
-            buffer = Integer.valueOf(keyValueData.
-                    get(keyValueData.keySet().
-                            toArray()[i]).toString());
-
-            if (maximalValueOfWord < Integer.valueOf(keyValueData.
-                    get(keyValueData.keySet().
-                            toArray()[i]).toString()) )
-            {
-                maximalValueOfWord = buffer;
-                maximalKeyOfWord = keyValueData.keySet().toArray()[i].toString();
-            }
-
-
-            percentage = ((float) Integer.valueOf(keyValueData.
-                    get(keyValueData.keySet().
+            percentage = ((float) Integer.valueOf(sortedKeyValueData.
+                    get(sortedKeyValueData.keySet().
                             toArray()[i]).toString()) /  quantityOfwords) * 100;
 
-//            System.out.println("Values collection from map - " +
-//                    keyValueData.keySet().toArray()[i]  + " - " +
-//                    keyValueData.get(keyValueData.keySet().toArray()[i]) + " - " +
-//                    percentage + " %"
-//            );
-            try {
+           try {
                 result.write(sortedKeyValueData.keySet().toArray()[i].toString());
                 result.write( " - ");
                 result.write(sortedKeyValueData.get(sortedKeyValueData.keySet().toArray()[i]).toString());
@@ -96,7 +78,7 @@ public class SemanticCoreBuilder {
     }
 
     public File getResultFile(){
-        File resultFile = new File(this.getClass().getResource("result.html").getFile());
+        resultFile = new File(this.getClass().getResource("result.html").getFile());
         return resultFile;
     }
 }
