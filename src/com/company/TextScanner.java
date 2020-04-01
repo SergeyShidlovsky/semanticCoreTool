@@ -15,9 +15,6 @@ public class TextScanner {
     private String compareWord;
     private String nextWord;
     private String curr;
-
-    //Set key = new HashSet();
-    //Set value = new HashSet();
     Map map = new HashMap();
 
 

@@ -1,23 +1,21 @@
 package com.company;
 
-import com.sun.xml.internal.ws.api.ha.StickyFeature;
-
-import javax.management.ObjectName;
 import java.io.*;
 import java.text.DecimalFormat;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class SemanticCoreBuilder {
 
     private int buffer;
     private int quantityOfwords;
     private int maximalValueOfWord;
+    private int quantityOfStopWords;
+    private float water;
     private float percentage;
     private float classicToshnota;
     private String maximalKeyOfWord;
-    BufferedWriter result;
-    File resultFile;
+    public BufferedWriter result;
+    public File resultFile;
 
     private static DecimalFormat df = new DecimalFormat("0.00");
 
@@ -80,5 +78,27 @@ public class SemanticCoreBuilder {
     public File getResultFile(){
         resultFile = new File(this.getClass().getResource("result.html").getFile());
         return resultFile;
+    }
+
+    public int getQuantityOfStopWords(Map keyValueData, String[] stopArray){
+        quantityOfStopWords = 0;
+        for (int i = 0; i <keyValueData.size() ; i++) {
+
+            for (int j = 0; j < stopArray.length; j++) {
+                if((keyValueData.keySet().toArray()[i].toString().toLowerCase()).equals(
+                stopArray[j].toLowerCase())){
+                    quantityOfStopWords++;
+                    System.out.print(keyValueData.keySet().toArray()[i].toString() + "  ");
+                    break;
+                }
+            }
+        }
+        return quantityOfStopWords;
+    }
+
+    public float getWater(){
+        water = (float) ((quantityOfStopWords * 100 / quantityOfwords));
+        System.out.println("water " + water);
+        return water;
     }
 }

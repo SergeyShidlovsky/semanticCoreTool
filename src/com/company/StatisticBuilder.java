@@ -21,7 +21,10 @@ public class StatisticBuilder {
     public void buildTextStatistic(int quantityOfCymbols,
                                    int quantityOfCymbolsWithoutSpaces,
                                    int quantityOfWords,
-                                   int quantityOfUniqueWords) {
+                                   int quantityOfUniqueWords,
+                                   int quantityOfStopWords,
+                                   float water
+    ) {
         initializeStatisticFile();
 
         try {
@@ -32,6 +35,11 @@ public class StatisticBuilder {
             statistic.write("Кількість Слів - " + quantityOfWords);
             statistic.newLine();
             statistic.write("Кількість Унікальних Слів - " + quantityOfUniqueWords);
+            statistic.newLine();
+            statistic.write("Кількість Cтоп Слів - " + quantityOfStopWords);
+            statistic.newLine();
+            statistic.write("Вода тексту - " + water + "  %");
+
             statistic.close();
         } catch (IOException e) {
             e.printStackTrace();

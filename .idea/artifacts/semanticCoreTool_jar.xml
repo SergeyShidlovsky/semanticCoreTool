@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="semanticCoreTool:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/semanticCoreTool_jar</output-path>
+    <root id="archive" name="semanticCoreTool.jar">
+      <element id="module-output" name="semanticCoreTool" />
+    </root>
+  </artifact>
+</component>
