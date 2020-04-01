@@ -11,27 +11,29 @@ public class Main {
     public static void main(String[] args) {
         TextScanner ts = new TextScanner();
         String inputData = ts.readFile();
+
         TextBreaker tb = new TextBreaker();
         List<String> output = tb.getWords(inputData);
+
         SemanticCoreBuilder scb = new SemanticCoreBuilder();
         scb.buildSemanticCore(ts.getMapOfUniqueWords(output));
 
-        //System.out.println(inputData);
+        Library lb = new Library();
+        scb.getQuantityOfStopWords(ts.getMapOfUniqueWords(output) ,lb.getStopArray());
+
         StatisticBuilder statB = new StatisticBuilder();
         statB.buildTextStatistic(ts.getQuantityOfCymbols(inputData),
                 ts.getQuantityOfCymbolsWithoutSpaces(inputData),
                 output.size(),
-                scb.getQuantityOfUniqueWords(ts.getMapOfUniqueWords(output)));
+                scb.getQuantityOfUniqueWords(ts.getMapOfUniqueWords(output)),
+                scb.getQuantityOfStopWords(ts.getMapOfUniqueWords(output),lb.getStopArray()),
+                scb.getWater());
 
 
-        try {
-            Desktop.getDesktop().browse(scb.getResultFile().toURI());
+        ResultPresenter present = new ResultPresenter();
+        present.presentResult(scb.getResultFile().toURI());
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        System.out.println("Quantity of stop-words ");
 
         System.out.println("Water" );
 

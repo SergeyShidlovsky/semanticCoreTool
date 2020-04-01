@@ -17,6 +17,4 @@ public class ResultPresenter {
             e.printStackTrace();
         }
     }
-
-
 }
